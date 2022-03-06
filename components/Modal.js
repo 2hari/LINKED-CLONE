@@ -7,7 +7,7 @@ import { Avatar } from "@mui/material";
 import Form from "./Form";
 import { useRecoilValue } from "recoil";
 import { getPostState } from "../atoms/postAtom";
-// import Post from "./Post";
+import Post from "./Post";
 
 const dropIn = {
   hidden: {
@@ -55,7 +55,8 @@ const gifYouUp = {
 
 const Modal = ({ handleClose, type }) => {  
   const { data: session } = useSession();
-  // const post = useRecoilValue(getPostState);
+  // instead of state we are using value because we don't need the setter function. 
+  const post = useRecoilValue(getPostState);
 
   return (
     <Backdrop onClick={handleClose}>
@@ -95,15 +96,16 @@ const Modal = ({ handleClose, type }) => {
           animate="visible"
           exit="exit"
         >
-          {/* <motion.img
+          <motion.img
             alt=""
             onDoubleClick={handleClose}
             src={post.photoUrl}
             className="object-contain max-h-[80vh] w-full max-w-3xl rounded-l-lg"
           />
+          {/* rounded-r-lg not working on dark mode */}
           <div className="w-full md:w-3/5 bg-white dark:bg-[#1D2226] rounded-r-lg">
             <Post post={post} modalPost />
-          </div> */}
+          </div>
         </motion.div>
       )}
     </Backdrop>

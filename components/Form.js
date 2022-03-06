@@ -14,6 +14,7 @@ function Form() {
   const uploadPost = async (e) => {
     e.preventDefault();
 
+    //because using timestamp and converting it to user readable format is pain and error. 
     const response = await fetch("/api/posts", {
       method: "POST",
       body: JSON.stringify({
